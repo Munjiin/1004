@@ -1,0 +1,75 @@
+프로젝트 명 : 1004
+
+카카오 오픈소스 이용
+---------------------------------------------------------------<mapEx1.html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>지도 생성하기</title>
+
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:100%;height:50vh;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3cfaa90d75acc0d5832172ba581c674a"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new daum.maps.Map(mapContainer, mapOption);
+</script>
+</body>
+</html>
+
+
+===============================================================sortEx.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // //정렬
+    // var arr = [45,66,1,23,44,5];
+    // arr.sort(function (a,b) {
+    //     return a-b;
+    // });
+    // console.log(arr);
+
+    var current={lat:37.570768,lng: 126.985308};
+
+    var arr = [{title:'남',lat:37.568110,lng:126.985276},{title:'북',lat:37.579543,lng:126.985437},{title:'서',lat:37.570453,lng:126.976926},{title:'동',lat:37.570383,lng:126.986421}];
+
+    //거리계산 함수
+    function calcDistance(p1,p2) {
+        return Math.sqrt(Math.pow(p1.lat - p2.lat,2)+Math.pow(p1.lng - p2.lng,2)) ;
+
+    }
+
+    arr.sort(function (a,b) {
+        //현재위치와의 거리
+        var d1 = calcDistance(current,a) * 1000000000;
+        var d2 = calcDistance(current,b) * 1000000000;
+        return d1-d2;
+    })
+
+    console.log(arr);
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+===============================================================================findlocation.html
